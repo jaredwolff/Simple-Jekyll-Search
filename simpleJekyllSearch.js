@@ -1,14 +1,13 @@
 (function($) {
     $.fn.simpleJekyllSearch = function(options) {
         var settings = $.extend({
-            jsonFile        : '/search.json',
-            jsonFormat      : 'title,category,desc,url,date',
-            template        : '<a href="{url}" title="{title}">{title}</a>',
-            searchResults   : '.results',
-            searchResultsTitle   : '<h4>Search results</h4>',
-            limit           : '10',
-            noResults       : '<p>Oh shucks<br/><small>Nothing found :(</small></p>'
+            jsonFile            : '/search.json',
+            jsonFormat          : 'title,category,desc,url,date',
+            template            : '<a href="{url}" title="{title}">{title}</a>',
+            searchResults       : '.post-search-results',
+            searchResultsTitle  : '<h1>Search results</h1>',
             unorderedList       : true,
+            limit               : '10',
             noResults           : '<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>No results found.</div>'
         }, options);
 
