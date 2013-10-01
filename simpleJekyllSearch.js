@@ -15,7 +15,9 @@
         
         var jsonData = [],
             origThis = this,
-            searchResults = $(settings.searchResults);
+            clearSearch = $('.clear-search')
+            searchResults = $(settings.searchResults),
+            content = $(settings.postContent);
 
         if(settings.jsonFile.length && searchResults.length){
             $.ajax({
@@ -45,6 +47,17 @@
                     clearSearchResults();
                 }
             });
+        }
+
+        function registerCloseClick() {
+            $( document ).on('click', clearSearch, function() {
+                clearSearchResults();
+                origThis.val('');
+            });
+        }
+
+        function unregisterCloseClick() {
+            clearSearch.unbind('click');
         }
 
         function performSearch(str){
