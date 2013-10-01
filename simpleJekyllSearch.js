@@ -8,6 +8,7 @@
             searchResultsTitle   : '<h4>Search results</h4>',
             limit           : '10',
             noResults       : '<p>Oh shucks<br/><small>Nothing found :(</small></p>'
+            unorderedList       : true,
         }, options);
 
         var properties = settings.jsonFormat.split(',');
@@ -62,7 +63,12 @@
 
         function writeMatches(m){
             clearSearchResults();
-            searchResults.append( $(settings.searchResultsTitle) );
+            // Adding <ul> tags for unordered list variable
+            if (settings.unorderedList) {
+                searchResults.append( $(settings.searchResultsTitle + "<ul>") );
+            } else {
+                searchResults.append( $(settings.searchResultsTitle) );
+            }
 
             if(m.length){
                 $.each(m,function(i,entry){
@@ -72,18 +78,32 @@
                             var regex = new RegExp("\{" + properties[i] + "\}", 'g');
                             output = output.replace(regex, entry[properties[i]]);
                         }
-                        searchResults.append($(output));
+
+                        // Adding <li> tags for unordered list variable
+                        if(settings.unorderedList) {
+                            searchResults.append( $("<li>" + output + "</li>"));
+                        } else {
+                            searchResults.append($(output));
+                        }
                     }
                 });
             }else{
                 searchResults.append( settings.noResults );
             }
 
+            // Adding <ul> tags for unordered list variable
+            if (settings.unorderedList) {
+                searchResults.append( "</ul><div class='text-right post-close-text'><a class='clear-search' href='#'>Close Search</a></div><hr>" );
+
+                jQuery(document).ready( function( ) { registerCloseClick(); } );
+            }
 
         }
 
         function clearSearchResults(){
+            unregisterCloseClick();
             searchResults.children().remove();
+            content.show();
         }
     }
 }(jQuery));
