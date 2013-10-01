@@ -9,6 +9,7 @@
             limit           : '10',
             noResults       : '<p>Oh shucks<br/><small>Nothing found :(</small></p>'
             unorderedList       : true,
+            noResults           : '<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>No results found.</div>'
         }, options);
 
         var properties = settings.jsonFormat.split(',');
