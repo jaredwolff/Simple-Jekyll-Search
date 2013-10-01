@@ -50,7 +50,7 @@
         }
 
         function registerCloseClick() {
-            $( document ).on('click', clearSearch, function() {
+            $( '.post-close-container' ).on('click', clearSearch, function() {
                 clearSearchResults();
                 origThis.val('');
             });
@@ -106,7 +106,7 @@
 
             // Adding <ul> tags for unordered list variable
             if (settings.unorderedList) {
-                searchResults.append( "</ul><div class='text-right post-close-text'><a class='clear-search' href='#'>Close Search</a></div><hr>" );
+                searchResults.append( "</ul><div class='text-right post-close-container'><a class='clear-search' href='#'>Close Search</a></div><hr>" );
 
                 jQuery(document).ready( function( ) { registerCloseClick(); } );
             }
