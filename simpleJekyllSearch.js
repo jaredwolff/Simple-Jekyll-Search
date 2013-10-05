@@ -5,7 +5,7 @@
             jsonFormat          : 'title,category,desc,url,date',
             template            : '<a href="{url}" title="{title}">{title}</a>',
             searchResults       : '.post-search-results',
-            searchResultsTitle  : '<h1>Search results</h1>',
+            searchResultsTitle  : '<div class="post-search-title">Search results</div>',
             unorderedList       : true,
             limit               : '10',
             noResults           : '<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>No results found.</div>'
